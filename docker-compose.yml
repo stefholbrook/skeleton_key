@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:14.1
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: skeleton_key_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    restart: on-failure
+    environment:
+      - SKELETON_KEY_DB_HOSTNAME=db
