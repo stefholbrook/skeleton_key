@@ -27,7 +27,7 @@ defmodule SkeletonKeyWeb.UserLoginLive do
           </.link>
         </:actions>
         <:actions>
-          <.button phx-disable-with="Logging in..." class="w-full">
+          <.button phx-disable-with="Logging in..." class="w-full cursor-pointer">
             Log in <span aria-hidden="true">→</span>
           </.button>
         </:actions>
@@ -48,7 +48,7 @@ defmodule SkeletonKeyWeb.UserLoginLive do
         <%!-- class="w-full" --%>
         <.input field={f[:email]} type="email" label="Email" required />
         <:actions>
-          <.button class="w-full">
+          <.button class="w-full cursor-pointer">
             Send me a link <.icon name="hero-envelope" />
           </.button>
         </:actions>
