@@ -25,18 +25,19 @@ Run the following:
 You can register or log in a user through email/password combination or through a magiclink.
 
 #### Magiclink
-In the default `MIX_ENV=dev`, emails are sent to [`/dev/mailbox`](http://localhost:4000/dev/mailbox) as well as output in the logs. It will look like the example below. Just follow the link to log in.
+
+Registering a user will send them a confirmation email that will direct the user to a "confirmation" page and authenticate them, whereas logging in will send a "sign in" email to log in to the account.
+
+Emails are sent to [`/dev/mailbox`](http://localhost:4000/dev/mailbox), but will also output in the logs. It will look like the example below. Just follow the link to log in.
 
 ```text
 ==============================
-Hi test1@email.com,
+Hi test@email.com,
 Please use this link to sign in:
 http://localhost:4000/user/log_in/-xxVRm0j_BGGTb2ox4XeHdiexY-XUyEqQbCeocwPG9k
 If you didn't request this email, feel free to ignore this.
 ==============================
 ```
-
-Registering a user will send them a confirmation email that will direct the user to a "confirmation" page and authenticate them, whereas logging in will send a "sign in" email to log in to the account.
 
 When you're ready to add an email service, consult the [Swoosh documentation](https://github.com/swoosh/swoosh/blob/main/README.md#adapters).
 
