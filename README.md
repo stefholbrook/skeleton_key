@@ -5,7 +5,7 @@
 #### With Docker
   Run `docker compose up`
 
-Now you can visit [`[http:localhost:4000/user/login]`](http://localhost:4000/user/log_in) from your browser.
+Now you can visit [`http:localhost:4000/user/login`](http://localhost:4000/user/log_in) from your browser.
 
 #### With Elixir
 
