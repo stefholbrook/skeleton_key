@@ -1,4 +1,5 @@
 defmodule SkeletonKey.Astrology.AstroClient.Http do
+  @moduledoc "API scaffold for an Astro API"
   require Logger
 
   def fetch_pokemon(pokemon) do
