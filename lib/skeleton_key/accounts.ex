@@ -119,7 +119,7 @@ defmodule SkeletonKey.Accounts do
 
   """
   def get_user_by_email(email) when is_binary(email) do
-    Repo.get_by(User, email: email) |> IO.inspect()
+    Repo.get_by(User, email: email)
   end
 
   @doc """
@@ -181,7 +181,6 @@ defmodule SkeletonKey.Accounts do
     %User{}
     |> User.magic_link_registration_changeset(attrs)
     |> Repo.insert()
-    |> IO.inspect()
   end
 
   @doc """

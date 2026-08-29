@@ -18,7 +18,10 @@ defmodule SkeletonKeyWeb.UserLiveTest do
     setup [:create_user]
 
     test "lists all users", %{conn: conn, user: user} do
-      {:ok, _index_live, html} = live(conn, ~p"/admin/users")
+      {:ok, _index_live, html} =
+        conn
+        |> log_in_user(user_fixture())
+        |> live(~p"/admin/users")
 
       assert html =~ "Listing Users"
       assert html =~ user.email

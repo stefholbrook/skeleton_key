@@ -405,9 +405,9 @@ defmodule SkeletonKeyWeb.CoreComponents do
     """
   end
 
-  # @doc """
-  # Generates a generic error message.
-  # """
+  @doc """
+  Generates a generic error message.
+  """
   slot :inner_block, required: true
 
   def error(assigns) do
