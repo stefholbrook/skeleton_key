@@ -3,7 +3,7 @@ defmodule SkeletonKeyWeb.PageControllerTest do
   use SkeletonKeyWeb.ConnCase
 
   test "GET /", %{conn: conn} do
-    conn = get(conn, ~p"/")
+    conn = get(conn, ~p"/user/log_in")
     assert html_response(conn, 200) =~ ""
   end
 end

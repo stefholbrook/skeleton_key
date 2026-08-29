@@ -33,15 +33,17 @@ defmodule SkeletonKeyWeb.Router do
   end
 
   scope "/admin", SkeletonKeyWeb do
-    pipe_through :browser
-    pipe_through :admin
+    pipe_through [:browser, :admin]
 
-    live "/users", UserLive.Index, :index
-    live "/users/new", UserLive.Index, :new
-    live "/users/:id/edit", UserLive.Index, :edit
+    live_session :admin,
+      on_mount: [{SkeletonKeyWeb.UserAuth, :mount_current_user}] do
+      live "/users", UserLive.Index, :index
+      live "/users/new", UserLive.Index, :new
+      live "/users/:id/edit", UserLive.Index, :edit
 
-    live "/users/:id", UserLive.Show, :show
-    live "/users/:id/show/edit", UserLive.Show, :edit
+      live "/users/:id", UserLive.Show, :show
+      live "/users/:id/show/edit", UserLive.Show, :edit
+    end
   end
 
   # Other scopes may use custom stacks.

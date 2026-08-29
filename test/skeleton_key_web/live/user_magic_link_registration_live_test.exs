@@ -59,12 +59,23 @@ defmodule SkeletonKeyWeb.UserMagicLinkRegistrationLiveTest do
 
       assert %URI{scheme: "http", path: "/user/confirm/" <> token} = URI.parse(url)
 
-      # Visit confirmation link and assert user is authenticated and lands on confirmation page
-      conn = get(conn, "/user/confirm/#{token}")
+      # Visit confirmation link lands on confirmation page, confirms account and is authenticated
+      {:ok, lv, _html} = live(conn, ~p"/user/confirm/#{token}")
+
+      result =
+        lv
+        |> form("#confirmation_form")
+        |> render_submit()
+        |> follow_redirect(conn, "/")
+
+      assert {:ok, conn} = result
+
+      assert Phoenix.Flash.get(conn.assigns.flash, :info) =~
+               "User confirmed successfully"
+
       response = html_response(conn, 200)
 
       assert response =~ email
-      assert response =~ "Confirm Account"
       assert response =~ "Log out"
       assert is_binary(conn.private.plug_session["user_token"])
     end

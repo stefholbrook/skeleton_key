@@ -4,9 +4,9 @@ defmodule SkeletonKeyWeb.UserAuthTest do
 
   import SkeletonKey.AccountsFixtures
 
+  alias Phoenix.LiveView
   alias SkeletonKey.Accounts
   alias SkeletonKeyWeb.UserAuth
-  alias Phoenix.LiveView
 
   @remember_me_cookie "_skeleton_key_web_user_remember_me"
 
